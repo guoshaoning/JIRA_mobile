@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="icon/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/sm.min.css">
+		<link rel="stylesheet" href="css/sm-extend.min.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+		<link href="css/indexstyle.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="page" id="router">
+			<div class="content">
+				<div class="container-fluid" id="contentleft">
+					<div class="row">
+						<img src="img/loginlog.jpg" id="img" />
+					</div>
+
+					<div id="prolist">
+						<div class="row bread">
+							<ol class="breadcrumb">
+								<li>
+									<a href="#">主页</a>
+								</li>
+								<li>
+									<a href="#">JIRA</a>
+								</li>
+								<li class="active">问题列表</li>
+							</ol>
+						</div>
+						<div class="row" id="frombroad">
+							<table class="table table-striped">
+								<tr>
+									<td class="problem">ID</td>
+									<td class="problem">主题</td>
+									<td class="problem">项目</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>
+										<a href="prodetail.html">问题1</a>
+									</td>
+									<td>这是备注</td>
+								</tr>
+								</a>
+								<tr>
+									<td>2</td>
+									<td>
+										<a href="prodetail.html">问题2</a>
+									</td>
+									<td>这是备注</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>
+										<a href="prodetail.html">问题3</a>
+									</td>
+									<td>这是备注</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>
+										<a href="prodetail.html">问题4</a>
+									</td>
+									<td>这是备注</td>
+								</tr>
+							</table>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-md-11" style="padding-left: 0;">
+								<ul class="pagination" style="margin: 20px 0 0 0;">
+									<li>
+										<a href="#" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li class="active">
+										<a href="#">1</a>
+									</li>
+									<li>
+										<a href="#">2</a>
+									</li>
+									<li>
+										<a href="#">3</a>
+									</li>
+									<li>
+										<a href="#">4</a>
+									</li>
+									<li>
+										<a href="#">5</a>
+									</li>
+									<li>
+										<a href="#" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div>
+								<a class="btn btn-info" href="newproblem.html" style="margin-top: 20px;">新建问题</a>
+							</div>
+						</div>
+					</div>
+
+					<div id="board">
+						<div class="row bread">
+							<ol class="breadcrumb">
+								<li>
+									<a href="#">主页</a>
+								</li>
+								<li>
+									<a href="#">JIRA</a>
+								</li>
+								<li class="active">报告板</li>
+							</ol>
+						</div>
+						<span id="zongjie">总结</span>
+						<div class="col-md-4 col-sm-6">
+							<canvas id="myChart" width="400" height="400"></canvas>
+						</div>
+					</div>
+
+					<div id="about">
+						<div class="row bread">
+							<ol class="breadcrumb">
+								<li>
+									<a href="#">主页</a>
+								</li>
+								<li>
+									<a href="#">JIRA</a>
+								</li>
+								<li class="active">关于我们</li>
+							</ol>
+						</div>
+					</div>
+
+				</div>
+				<div class="side-bar"><img src="img/celan.png" class="open-panel" data-panel='#panel-left-demo' id="celanimg" /></div>
+			</div>
+		</div>
+
+		<div class="panel-overlay"></div>
+
+		<div class="panel panel-left panel-reveal theme-dark theme-a" id='panel-left-demo'>
+			<div>
+				<span id="welcome">欢迎您：郭绍凝<a href="#" id="close">退出</a></span>
+			</div>
+			<ul id="accordion" class="accordion">
+				<li>
+					<div class="link">导航</div>
+				</li>
+				<li>
+					<div class="link">JIRA</div>
+					<ul class="submenu">
+						<li>
+							<a href="#" id="pprolist">问题列表</a>
+						</li>
+						<li>
+							<a href="#" id="pboard">报告板</a>
+						</li>
+						<li>
+							<a href="#" id="pabout">关于我们</a>
+						</li>
+					</ul>
+				</li>
+				<!--<li>
+					<div class="link">web</div>
+					<ul class="submenu">
+						<li>
+							<a href="#">Photoshop</a>
+						</li>
+						<li>
+							<a href="#">HTML</a>
+						</li>
+						<li>
+							<a href="#">CSS</a>
+						</li>
+						<li>
+							<a href="#">Maquetacion web</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="link">web</div>
+					<ul class="submenu">
+						<li>
+							<a href="#">Photoshop</a>
+						</li>
+						<li>
+							<a href="#">HTML</a>
+						</li>
+						<li>
+							<a href="#">CSS</a>
+						</li>
+						<li>
+							<a href="#">Maquetacion web</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="link">web</div>
+					<ul class="submenu">
+						<li>
+							<a href="#">Photoshop</a>
+						</li>
+						<li>
+							<a href="#">HTML</a>
+						</li>
+						<li>
+							<a href="#">CSS</a>
+						</li>
+						<li>
+							<a href="#">Maquetacion web</a>
+						</li>
+					</ul>
+				</li>-->
+			</ul>
+			<p id="ceclose">
+				<a href="#" class="close-panel">关闭</a>
+			</p>
+		</div>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+		<script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm-extend.min.js' charset='utf-8'></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="js/Chart.js"></script>
+		<script src="uploadify/jquery.uploadify.js" type="text/javascript"></script>
+		<script>
+			$(function() {
+				//侧栏
+				var Accordion = function(el, multiple) {
+					this.el = el || {};
+					this.multiple = multiple || false;
+
+					// Variables privadas
+					var links = this.el.find('.link');
+					// Evento
+					links.on('click', { el: this.el, multiple: this.multiple }, this.dropdown)
+				}
+
+				Accordion.prototype.dropdown = function(e) {
+					var $el = e.data.el;
+					$this = $(this),
+						$next = $this.next();
+
+					$next.slideToggle();
+					$this.parent().toggleClass('open');
+
+					if(!e.data.multiple) {
+						$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+					};
+				}
+
+				var accordion = new Accordion($('#accordion'), false);
+
+				$("#board").hide();
+				$("#about").hide();
+
+				//局部跳转
+				$("#pboard").click(function() {
+					$("#about").hide();
+					$("#prolist").hide();
+					$("#board").show();
+				});
+				$("#pprolist").click(function() {
+					$("#board").hide();
+					$("#about").hide();
+					$("#prolist").show();
+				});
+				$("#pabout").click(function() {
+					$("#prolist").hide();
+					$("#board").hide();
+					$("#about").show();
+				});
+
+			});
+			//图表
+			var ctx = document.getElementById("myChart").getContext('2d');
+			data = {
+				datasets: [{
+					data: [10, 20, 30],
+					backgroundColor: ['rgb(255, 106, 106)', 'rgb(238,220,130)', 'rgb(135,206,250)'],
+				}],
+
+				labels: [
+					'Red',
+					'Yellow',
+					'Blue'
+				]
+			}
+			var myChart = new Chart(ctx, {
+				type: 'pie',
+				data: data,
+			});
+		</script>
+	</body>
+
+</html>

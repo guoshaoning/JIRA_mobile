@@ -1,0 +1,34 @@
+body{
+	font-size: 1.5rem;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#contentleft{
+	margin-left: 6%;
+	margin-right: 6%;
+}
+#img {
+	width: 10%;
+}
+.bread{
+	margin-top: 2%;
+}
+#youpro{
+	border-bottom: 1px solid #808080;
+	margin-bottom: 2%;
+}
+#youpro span{
+	font-size: 2rem;
+}
+.must{
+	color:red;
+}
+#J_DeleteImgs{
+	display: none;
+}
+#submit{
+	margin: 3% 0 10% 0;
+}

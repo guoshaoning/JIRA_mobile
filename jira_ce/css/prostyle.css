@@ -1,0 +1,17 @@
+body{
+	font-size: 1.5rem;
+}
+#contentleft{
+	margin-left: 6%;
+	margin-right: 6%;
+}
+#img {
+	width: 10%;
+}
+.bread{
+	margin-top: 2%;
+}
+
+#submit{
+	margin: 3% 0 10% 0;
+}

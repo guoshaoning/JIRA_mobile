@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="summernote/summernote.css" rel="stylesheet" type="text/css" />
+		<link href="uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+		<link href="css/newprostyle.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container-fluid" id="contentleft">
+			<div class="row">
+				<img src="img/loginlog.jpg" id="img" />
+			</div>
+			<div class="row">
+				<ol class="breadcrumb bread">
+					<li>
+						<a href="#">主页</a>
+					</li>
+					<li>
+						<a href="#">JIRA</a>
+					</li>
+					<li>
+						<a href="#">问题列表</a>
+					</li>
+					<li class="active">新建问题</li>
+				</ol>
+			</div>
+			<div class="row" id="youpro">
+				<span>请提交您的问题</span>
+			</div>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="project" class="col-md-2 control-label">项目:</label>
+					<div class="col-md-2">
+						<select class="form-control" id="project" name="project">
+							<option>项目1</option>
+							<option>项目2</option>
+							<option>项目3</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="theme" class="col-md-2 control-label">主题:<span class="must">*</span></label>
+					<div class="col-md-2">
+						<input type="type" class="form-control" id="theme" name="theme" value="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="type" class="col-md-2 control-label">问题类型:</label>
+					<div class="col-md-2">
+						<input type="type" class="form-control" id="type" name="type" value="客户问题" disabled="disabled">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="priority" class="col-md-2 control-label">优先级:</label>
+					<div class="col-md-2">
+						<select class="form-control" id="priority" name="priority">
+							<option>难</option>
+							<option>中</option>
+							<option>易</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="priority" class="col-md-2 control-label">描述:</label>
+					<div class="col-md-10">
+						<div id="summernote">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="J_Images" class="col-sm-2 control-label">选择文件:</label>
+					<div class="col-sm-2">
+						<input type="file" id="J_Images" name="file" multiple="multiple">
+					</div>
+					<div class="col-sm-2">
+						<button id="J_Images_Upload" type="button" class="btn btn-primary" onclick="javascript:$('#J_Images').uploadify('upload', '*');" value="上传">
+                                                                                                   上传附件</button>
+						<button id="J_Images_Cancel" type="button" class="btn btn-primary" onclick="javascript:$('#J_Images').uploadify('cancel', '*');" value="取消">
+                                                                                                    取消上传</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="J_Upload_Files" class="col-sm-2 control-label">已上传附件:</label>
+					<div class="col-sm-10">
+						<ul id="J_Upload_Files">
+						</ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2 col-sm-offset-2">
+						<button id="J_DeleteImgs" type="button" class="btn btn-primary" onclick="javascript:deletefiles()">
+                                                                       删除选中的附件
+						</button>
+					</div>
+				</div>
+				<div class="form-group" id="submit">
+					<div class="col-sm-1 col-sm-offset-2 col-xs-1 col-xs-offset-1">
+						<a class="btn btn-info" href="index.html">添加</a>
+					</div>
+					<div class="col-sm-1 col-xs-1 col-xs-offset-1">
+						<a class="btn btn-info" href="index.html">取消</a>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="summernote/summernote.js" type="text/javascript"></script>
+		<script src="uploadify/jquery.uploadify.js" type="text/javascript"></script>
+		<script>
+			//富文本编辑器
+			$(document).ready(function() {
+				$('#summernote').summernote({
+					height: 300, // set editor height
+					minHeight: null, // set minimum height of editor
+					maxHeight: null, // set maximum height of editor
+					focus: false // set focus to editable area after initializing summernote
+				});
+			});
+			//附件上传
+			$(document).ready(function() {
+				$('#J_Images').uploadify({
+					'swf': 'uploadify/uploadify.swf', //上传文件的进度条
+					'uploader': '', //上传文件的后台处理页面
+					'buttonText': '选择附件',
+					'cancelImg': 'uploadify/uploadify-cancel.png',
+					'auto': false,
+					'multi': true,
+					'onQueueComplete': function(queueData) {
+						alert('文件已成功上传');
+					},
+					'onUploadComplete': function(file) {
+						var before = $('#J_Upload_Files').html();
+						var newinfo = "<li><input type='checkbox' name='Images' value='" + file.name + "' /><span id='filename'>" + file.name + "</span></li>";
+						$('#J_Upload_Files').html(before + newinfo);
+						$("#J_DeleteImgs").css("display", "block");
+					}
+				});
+			});
+
+			//删除附件，取代服务器delete事件
+			$(document).ready(function deletefiles() {
+				$("#J_DeleteImgs").click(function() {
+					var o = $('input:checkbox[name=Images]:checked').length;
+					if(o === 0) {
+						alert("请选择需要删除的附件")
+						return;
+					}
+					var s = "";
+					$('input:checkbox[name=Images]:checked').each(function(i) {
+						if(0 == i) {
+							s = $(this).val();
+						} else {
+							s += ("^^^^" + $(this).val());
+						}
+					});
+					$.ajax({
+						type: "Post",
+						url: "?files=" + s,
+						data: "",
+						contentType: "application/text; charset=utf-8",
+						dataType: "text",
+						success: function(data) {
+							$('input:checkbox[name=Images]:checked').parent().remove();
+						},
+						error: function(err) {
+							alert("删除失败");
+						}
+					});
+					//禁用按钮的提交  
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>
